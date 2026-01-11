@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data:;
+        font-src 'self';
+      "
+    />
+    <title>Взвешенное среднее</title>
+    <link rel="stylesheet" href="../../shared/css/style.css" />
+  </head>
+  <body>
+    <div id="sidebar-placeholder"></div>
+
+    <div class="content-wrapper">
+      <h1>Взвешенное среднее</h1>
+
+      <table id="calc2Table" , style="table-layout: fixed">
+        <colgroup>
+          <col style="width: calc((100% - 50px) / 2)" />
+
+          <col style="width: calc((100% - 50px) / 2)" />
+
+          <col style="width: 50px" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Оценка</th>
+            <th>Вес</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <h2>Результат:</h2>
+      <div id="resultDisplay">-</div>
+
+      <h2>А можна чота вам сделать?</h2>
+      <div class="combinations-block">
+        <div class="controls">
+          <span> Хотят оценку в журнале: </span>
+          <select
+            id="targetMean"
+            style="
+              width: 98px;
+              padding: 6px 8px;
+              border-radius: 6px;
+              border: 1px solid #555;
+              background-color: #1e1e1e;
+              color: #e0e0e0;
+              font-size: 1em;
+            "
+          >
+            <option value="auto">Авто</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+
+        <div class="controls">
+          <span> Кол-во новых оценок: </span>
+          <input type="number" id="nNewGrades" value="1" min="1" max="5" />
+        </div>
+        <button
+          id="findBtn"
+          ,
+          class="calc-button"
+          style="
+            margin: 0px auto;
+            display: block;
+            width: 100%;
+            max-width: 250px;
+          "
+        >
+          Найти комбинацию
+        </button>
+      </div>
+
+      <div id="solutions"></div>
+
+      <script src="calc2.js"></script>
+      <script src="../../sidebar.js"></script>
+      <script src="../../titlebar.js"></script>
+    </div>
+  </body>
+</html>

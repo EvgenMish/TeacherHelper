@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data:;
+        font-src 'self';
+      "
+    />
+    <title>Случайное значение</title>
+    <link rel="stylesheet" href="../../shared/css/style.css" />
+    <style>
+      /* Таблица в стиле calc2 */
+      #stringInputBlock table {
+        width: 100%; 
+      }
+      #stringInputBlock {
+        width: 50%; 
+        max-width: 800px;
+        box-sizing: border-box;
+      }
+
+      #stringInputBlock th {
+        background-color: #333;
+        color: #fff;
+        font-weight: 600;
+        padding: 12px;
+        text-align: center;
+      }
+
+      #stringInputBlock td {
+        padding: 10px;
+        border-bottom: 1px solid #333;
+      }
+
+      #stringInputBlock tr:nth-child(even) {
+        background-color: #2a2a2a;
+      }
+
+      #stringInputBlock tr:hover {
+        background-color: #3a3a3a;
+      }
+
+      /* Поля ввода */
+      #stringTable input.string-input {
+        width: 100%;
+        padding: 6px 10px;
+        border-radius: 10px;
+        border: 1px solid #555;
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        font-size: 1em;
+        transition: all 0.2s;
+      }
+
+      #stringTable input.string-input:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        outline: none;
+      }
+
+      #stringInputBlock td:last-child {
+        width: 50px; 
+        text-align: right; 
+      }
+
+      #addRowBtn {
+        display: block;
+        width: 100%;
+        max-width: 800px;
+        margin: 10px auto;
+        background-color: #1e1e1e;
+        color: #555;
+        font-size: 1.2em;
+        font-weight: bold;
+        border: 1px solid #555;
+        border-radius: 10px;
+        padding: 12px 0;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      #addRowBtn:hover {
+        background-color: #555;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Подсветка выбранной строки */
+      #stringInputBlock tbody tr:nth-child(even) {
+        background-color: #2a2a2a;
+      }
+
+      #stringInputBlock tbody tr:hover {
+        background-color: #3a3a3a;
+      }
+
+      #stringInputBlock tbody tr.highlight {
+        background-image: linear-gradient(
+          to right,
+          rgba(141, 141, 141, 1),
+          rgba(141, 141, 141, 0)
+        );
+        color: #000 !important;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <div id="sidebar-placeholder"></div>
+
+    <div class="content-wrapper">
+
+        <h1>Случайное значение</h1>
+
+        <div class="mode-toggle">
+        <button id="numberMode" class="toggle-btn">Число</button>
+        <button id="stringMode" class="toggle-btn active">Строка</button>
+        </div>
+
+        <div
+        id="numberInputBlock"
+        style="display: none; margin-top: 20px; text-align: center"
+        >
+        <label
+            >Введите максимальное число:
+            <input type="number" id="maxNumber" min="1" value="10" />
+        </label>
+        <br /><br />
+        <button class="calc-button" id="pickNumber">
+            Выбрать!
+        </button>
+        </div>
+
+        <div
+        id="stringInputBlock"
+        style="display: none; margin-top: 0px; text-align: center"
+        >
+        <table id="stringTable">
+            <thead>
+                <tbody></tbody>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button id="addRowBtn">Добавить / Enter</button>
+        <button
+            class="calc-button"
+            id="pickString"
+            style="margin: 24px auto; display: block; width: 100%; max-width: 250px"
+        >
+            Выбрать!
+        </button>
+        </div>
+
+        <div id="resultDisplay"></div>
+
+        <script src="random.js"></script>
+        <script src="../../sidebar.js">
+        </script>
+        <script src="../../titlebar.js"></script>
+    </div>
+  </body>
+</html>

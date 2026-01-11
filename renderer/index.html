@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data:;
+        font-src 'self';
+      "
+    />
+    <title>Главная</title>
+    <link rel="stylesheet" href="./shared/css/style.css" />
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <h1 style="padding: 20px">Главная</h1>
+      <div class="buttons-container">
+        <button class="calc-button" data-href="./services/calc1/calc1.html">
+          Оценка по баллам
+        </button>
+        <button class="calc-button" data-href="./services/calc2/calc2.html">
+          Взвешенное среднее
+        </button>
+        <button class="calc-button" data-href="./services/random/random.html">
+          Случайное значение
+        </button>
+        <button class="calc-button" data-href="./services/seating/seating.html">
+          Рассадка
+        </button>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="titlebar.js"></script>
+  </body>
+</html>

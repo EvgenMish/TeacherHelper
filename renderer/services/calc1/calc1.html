@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data:;
+        font-src 'self';
+      "
+    />
+    <title>Оценка по баллам</title>
+    <link rel="stylesheet" href="../../shared/css/style.css" />
+  </head>
+  <body>
+    <div id="sidebar-placeholder"></div>
+
+    <div class="content-wrapper">
+      <h1></h1>
+
+      <div class="score-row">
+        <span> Набрано </span>
+        <input id="score" type="number" placeholder="0" />
+        <span> баллов из </span>
+        <input id="max" type="number" placeholder="100" />
+      </div>
+
+      <h2>Результат:</h2>
+      <div id="resultDisplay">-</div>
+
+      <table id="thresholdTable" , style="table-layout: fixed">
+        <colgroup>
+          <col style="width: calc(100% / 3)" />
+          <col style="width: calc(100% / 3)" />
+          <col style="width: calc(100% / 3)" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Оценка</th>
+            <th>Мин. %</th>
+            <th>Мин. балл</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <script src="calc1.js"></script>
+      <script src="../../sidebar.js"></script>
+      <script src="../../titlebar.js"></script>
+    </div>
+  </body>
+</html>

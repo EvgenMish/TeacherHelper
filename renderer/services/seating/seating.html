@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data:;
+        font-src 'self';
+      "
+    />
+    <title>Рассадка</title>
+    <link rel="stylesheet" href="../../shared/css/style.css" />
+    <style>
+      /* Свой hover, отменяем все от родителя */
+      #clear-classroom.clear-button:hover {
+        color: #ff5252;
+        background-color: rgba(255, 82, 82, 0.1) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Сайдбар -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Основной контент -->
+    <div class="content-wrapper">
+      <h1 style="margin-bottom: 30px"></h1>
+
+      <div class="seating-layout">
+        <!-- ===== КЛАСС ===== -->
+        <div class="classroom">
+          <!-- Управление размером -->
+          <div class="seating-controls">
+            <div class="control-group">
+              <span>Строки</span>
+              <button id="remove-row">−</button>
+              <button id="add-row">+</button>
+            </div>
+
+            <div class="control-group">
+              <span>Столбцы</span>
+              <button id="remove-column">−</button>
+              <button id="add-column">+</button>
+            </div>
+
+            <div class="control-group action-buttons">
+              <button
+                id="import-seating-btn"
+                ,
+                style="margin-left: 25px"
+                ,
+                title="Заполнить из загурженного JSON 
+(если рассадка уже была составлена и экспортирована ранее)"
+              >
+                ⭳
+              </button>
+
+              <button id="random-seating-btn" , title="Случайная рассадка">
+                ⚂
+              </button>
+
+              <button
+                id="clear-classroom"
+                ,
+                class="clear-button"
+                title="Очистить рассадку"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+
+          <!-- Сетка парт -->
+          <div id="desk-grid" class="desk-grid"></div>
+        </div>
+
+        <!-- ===== УЧЕНИКИ ===== -->
+        <div class="students-panel">
+          <button
+            id="import-students-btn"
+            class="calc-button"
+            style="
+              flex-shrink: 0; /* не сжимается */
+              position: sticky;
+              top: 0;
+              z-index: 10;
+              margin-bottom: 10px;
+              margin-top: 0px;
+            "
+            ,
+            title="exel: | A | B | C | D | - | Ф | И | О | пол | (хотя бы один)
+json: хранит в себе список учеников и рассадку (импорт JSON)"
+          >
+            Импорт JSON / EXEL
+          </button>
+
+          <input
+            type="file"
+            id="students-file-input"
+            accept=".json, .xlsx, .xls"
+            style="display: none"
+          />
+
+          <div id="students-list" class="students-list"></div>
+        </div>
+      </div>
+      <button
+        id="export-json-btn"
+        class="calc-button"
+        style="
+          flex-shrink: 0;
+          position: sticky;
+          width: 250px;
+          top: 0;
+          z-index: 10;
+          margin-bottom: 10px;
+          margin-top: 30px;
+        "
+      >
+        Экспорт конфига JSON
+      </button>
+      <button
+        id="export-pdf-btn"
+        class="calc-button"
+        style="
+          flex-shrink: 0;
+          position: sticky;
+          width: 250px;
+          top: 0;
+          z-index: 10;
+          margin-bottom: 10px;
+          margin-top: 10px;
+        "
+      >
+        Экспорт PDF
+      </button>
+    </div>
+
+    <script src="../../../node_modules/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="../../../node_modules/jspdf/dist/jspdf.umd.js"></script>
+    <script src="../../../node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js"></script>
+    <script type="module" src="logic.js"></script>
+    <script src="../../sidebar.js"></script>
+    <script src="../../titlebar.js"></script>
+  </body>
+</html>
